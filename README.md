@@ -226,6 +226,7 @@ The following variables are customizable only when `service_type=LoadBalancer`
 | loadbalancer_annotations | LoadBalancer annotations                 | Empty string  |
 | loadbalancer_protocol    | Protocol to use for Loadbalancer ingress | http          |
 | loadbalancer_port        | Port used for Loadbalancer ingress       | 80            |
+| loadbalancer_ip          | Public IP used for Loadbalancer ingress  | Empty sting   |
 
 ```yaml
 ---
@@ -234,6 +235,7 @@ spec:
   service_type: LoadBalancer
   loadbalancer_protocol: https
   loadbalancer_port: 443
+  loadbalancer_ip: 203.0.113.23
   loadbalancer_annotations: |
     environment: testing
   service_labels: |
@@ -243,6 +245,9 @@ spec:
 When setting up a Load Balancer for HTTPS you will be required to set the `loadbalancer_port` to move the port away from `80`.
 
 The HTTPS Load Balancer also uses SSL termination at the Load Balancer level and will offload traffic to AWX over HTTP.
+
+Instead of using annotations, some hosters only allow it to set a predefined public IP-Address in the loadbalancer service (loadbalancerIP).
+This can be done by setting the loadbalancer_ip. If loadbalancer_ip is unset, the loadbalancerIP will be assigned automatically.
 
 #### Ingress Type
 

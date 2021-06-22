@@ -35,6 +35,7 @@ ingress_tls_secret: ''
 
 loadbalancer_protocol: 'http'
 loadbalancer_port: '80'
+loadbalancer_ip: ''
 loadbalancer_annotations: ''
 
 # The TLS termination mechanism to use to access

@@ -44,6 +44,9 @@ spec:
     app.kubernetes.io/name: '{{ meta.name }}'
     app.kubernetes.io/managed-by: '{{ deployment_type }}-operator'
     app.kubernetes.io/component: '{{ deployment_type }}'
+{% if service_type | lower == 'loadbalancer' and loadbalancer_ip is not none %}
+  loadbalancerIP: {{ loadbalancer_ip }}
+{% endif %}
 {% if service_type | lower == "loadbalancer" %}
   type: LoadBalancer
 {% elif service_type | lower == "nodeport" %}

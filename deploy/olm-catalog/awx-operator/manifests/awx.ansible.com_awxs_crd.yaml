@@ -172,6 +172,9 @@ spec:
                 default: 80
                 description: Port to use for the loadbalancer
                 type: integer
+              loadbalancer_port:
+                description: Public IP to use on the loadbalancer
+                type: string
               loadbalancer_protocol:
                 default: http
                 description: Protocol to use for the loadbalancer
